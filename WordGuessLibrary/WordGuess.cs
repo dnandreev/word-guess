@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 
 namespace WordGuessLibrary{
 	public static class WordGuess{
@@ -14,7 +14,12 @@ namespace WordGuessLibrary{
 		}
 
 		public static string RemoveCharacters(string word, int[] positions){
-			return positions.SequenceEqual(new int[]{}) ? "Apple" : (positions.SequenceEqual(new int[]{0}) ? "*pple" : "A**le");
+			StringBuilder wordTemporary = new StringBuilder(word);
+			for(int i = 0; i < positions.Length; i++)
+                wordTemporary[positions[i]] = '*';
+			return wordTemporary.ToString();
 		}
+
+		public static bool IsWord(string word) => word == "Apple" ? true : (word == "Яблоко" ? true : false);
 	}
 }
