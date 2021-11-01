@@ -4,15 +4,16 @@ using static System.Console;
 namespace WordGuessGame{
 	internal class Program{
 		static void Main(string[] args){
-			string word;
+			OutputEncoding = InputEncoding = System.Text.Encoding.Unicode;
+			string word, description;
 			do{
 				Write("Введите слово: ");
 				word = ReadLine();
+				Write("Опишите слово: ");
+				description = ReadLine();
 			}
-			while(!WordGuess.IsWord(word));
+			while(!WordGuess.IsWord(word) || string.IsNullOrEmpty(description));
 			string wordGuessed = new string('*', word.Length);
-			Write("Опишите слово: ");
-			string description = ReadLine();
 			do{
 				char character;
 				do{
@@ -26,9 +27,8 @@ namespace WordGuessGame{
 				while(character == '*');
 				wordGuessed = WordGuess.ShowCharacters(word, wordGuessed, WordGuess.FindCharacterOccurences(word, character));
 			}
-			while(!WordGuess.IsWord(wordGuessed));
+			while(word != wordGuessed);
 			WriteLine($"Слово \"{wordGuessed}\" отгадано!");
-			WriteLine("Оно значило: " + description);
 		}
 	}
 }
