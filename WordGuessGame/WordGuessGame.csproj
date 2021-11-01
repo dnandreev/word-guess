@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WordGuessLibrary\WordGuessLibrary.csproj">
+      <Project>{632b071e-6b77-4475-8c33-cf01450dc544}</Project>
+      <Name>WordGuessLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

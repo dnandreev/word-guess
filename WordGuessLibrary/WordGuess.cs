@@ -13,13 +13,18 @@ namespace WordGuessLibrary{
 			return found.ToArray();
 		}
 
-		public static string RemoveCharacters(string word, int[] positions){
-			StringBuilder wordTemporary = new StringBuilder(word);
+		public static string ShowCharacters(string word, string wordGuessed, int[] positions){
+			StringBuilder wordTemporary = new StringBuilder(wordGuessed);
 			for(int i = 0; i < positions.Length; i++)
-                wordTemporary[positions[i]] = '*';
+                wordTemporary[positions[i]] = word[positions[i]];
 			return wordTemporary.ToString();
 		}
 
-		public static bool IsWord(string word) => word == "Apple" ? true : (word == "Яблоко" ? true : false);
+		public static bool IsWord(string word){
+			for(int i = 0; i < word.Length; i++)
+				if(!char.IsLetter(word[i]))
+					return false;
+			return true;
+		}
 	}
 }
